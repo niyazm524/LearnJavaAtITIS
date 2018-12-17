@@ -1,4 +1,4 @@
-package ml.bimdev.lists;
+package ml.bimdev.lists.arraylist;
 
 public class Main {
 

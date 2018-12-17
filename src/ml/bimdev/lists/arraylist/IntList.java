@@ -1,4 +1,4 @@
-package ml.bimdev.lists;
+package ml.bimdev.lists.arraylist;
 
 interface IntList {
     int get(int index);

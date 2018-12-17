@@ -1,4 +1,4 @@
-package ml.bimdev.lists;
+package ml.bimdev.lists.arraylist;
 import java.util.*;
 
 public class IntArrayList implements IntList

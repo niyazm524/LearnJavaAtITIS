@@ -1,4 +1,4 @@
-package ml.bimdev.generics.linkedlists;
+package ml.bimdev.lists.linkedlist;
 
 import org.jetbrains.annotations.NotNull;
 
