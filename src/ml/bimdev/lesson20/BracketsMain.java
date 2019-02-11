@@ -14,21 +14,33 @@ public class BracketsMain {
         System.out.println(isBracketsCorrect(s));
     }
 
-    static boolean isBracketsCorrect(String str) {
-        char[] symbols = str.toCharArray();
-        Stack stack = new Stack(symbols.length);
-        for (char c : symbols) {
-            if (isInArray(openBrackets, c)) {
+    static boolean isBracketsCorrect(String s) {
+        Stack stack = new LinkedStack();
+        char[] symbols = s.toCharArray();
+        for (int i = 0; i < symbols.length; i++) {
+            char c = symbols[i];
+            if (c == '(' || c == '[' || c == '{') {
                 stack.push(c);
             } else {
-                if (c == ')' || c == '}' || c == ']') {
-                    if (stack.isEmpty()) return false;
-                    // todo: brackets checking
+                if (c == ')' || c == ']' || c == '}') {
+                    if (!stack.isEmpty()) {
+                        char bracketFromStack = stack.pop();
+                        if (c == ')' && bracketFromStack != '(') {
+                            return false;
+                        }
+                        if (c == '}' && bracketFromStack != '{') {
+                            return false;
+                        }
+                        if (c == ']' && bracketFromStack != '[') {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
                 }
-
             }
         }
-        return false;
+        return stack.isEmpty();
     }
 
     static boolean isInArray(char[] arr, char c) {

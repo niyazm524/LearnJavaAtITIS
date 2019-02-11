@@ -2,7 +2,7 @@ package ml.bimdev.lesson20;
 
 public class Main {
     public static void main(String[] args) {
-        Stack stack = new Stack(10);
+        Stack stack = new ArrayStack(10);
         stack.push('p');
         stack.push('o');
         System.out.println(stack.pop() + " " + stack.pop());
@@ -12,7 +12,7 @@ public class Main {
     }
 
     static String reverseString(String s) {
-        Stack stack = new Stack(s.length());
+        Stack stack = new LinkedStack();
         char[] oldArr = s.toCharArray();
         char[] arr = new char[s.length()];
         for (char c : oldArr)
