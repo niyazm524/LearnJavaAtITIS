@@ -1,7 +1,5 @@
 package ml.bimdev.lists.linkedlist;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Iterator;
 
 public class MyLinkedList<T> implements Iterable<T> {
@@ -104,7 +102,6 @@ public class MyLinkedList<T> implements Iterable<T> {
         return count;
     }
 
-    @NotNull
     @Override
     public Iterator<T> iterator() {
         Iterator<T> iterator = new Iterator<T>() {
