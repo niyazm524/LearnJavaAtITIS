@@ -1,27 +1,31 @@
 package ml.bimdev.lesson21.binsearch;
 
-import java.util.Comparator;
-
 public class SortedList<T extends Comparable> {
     private Object[] arr;
     private int count;
 
-    public SortedList(int size) {
-        this.arr = new Object[size];
+    public SortedList() {
+        this.arr = new Object[10];
     }
 
-    public void add(T audioTrack) {
+    private void grow() {
+        int oldCapacity = arr.length;
+        int newCapacity = (int) (oldCapacity * 1.5f);
+        Object[] newArr = new Object[newCapacity];
+        System.arraycopy(arr, 0, newArr, 0, arr.length);
+        arr = newArr;
+    }
+
+    public void add(T element) {
         if (count >= arr.length)
-            throw new IllegalStateException("List is full");
+            grow();
         int c = 0;
-        while (c < count && ((T) arr[c]).compareTo(audioTrack) <= 0) {
+        while (c < count && ((T) arr[c]).compareTo(element) <= 0) {
             c++;
         }
-        for (int i = count - 1; i > c; i--) {
-            arr[i + 1] = arr[i];
-        }
+        if (count - 1 - c >= 0) System.arraycopy(arr, c + 1, arr, c + 1 + 1, count - 1 - c);
         count++;
-        arr[c] = audioTrack;
+        arr[c] = element;
     }
 
     public void printList() {

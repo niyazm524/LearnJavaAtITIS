@@ -1,4 +1,4 @@
-package ml.bimdev.lesson23;
+package ml.bimdev.lesson24;
 
 public class ToUppercaseProcessingRule implements TextProcessingRule {
     @Override
