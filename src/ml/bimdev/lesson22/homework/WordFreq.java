@@ -12,10 +12,10 @@ class WordFreq {
     public static void main(String[] args) throws IOException {
         WordFreq wordFreq = new WordFreq();
         wordFreq.pushFile("assets/lesson22/java-tutorial.txt");
-        System.out.println(wordFreq.formatResults());
+        wordFreq.getTopResults(10).forEach(System.out::println);
     }
 
-    WordFreq() {
+    public WordFreq() {
         map = new IntegerMap();
     }
 
@@ -35,12 +35,17 @@ class WordFreq {
         bufferedReader.lines().map(this::tokenize).forEach(this::pushArray);
     }
 
-    public Stream getResultsAsStream() {
+    public Stream<IntegerMap.Entry> getResultsAsStream() {
         map.sortByValue();
         return map.asStream();
     }
 
-    public String formatResults() {
+    public Stream<IntegerMap.Entry> getTopResults(int limit) {
+        return getResultsAsStream().limit(limit);
+    }
+
+    @Override
+    public String toString() {
         map.sortByValue();
         return map.toString();
     }

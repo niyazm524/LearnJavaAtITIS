@@ -3,7 +3,6 @@ package ml.bimdev.lesson22.homework;
 import ml.bimdev.lesson21.map.SimpleMap;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.stream.Stream;
 
 class IntegerMap extends SimpleMap<String, Integer> {
@@ -15,7 +14,7 @@ class IntegerMap extends SimpleMap<String, Integer> {
             }
         }
         if (count >= entries.length) grow();
-        entries[count++] = new Entry<String, Integer>(key, value);
+        entries[count++] = new Entry(key, value);
     }
 
     public void sortByValue() {
@@ -30,5 +29,14 @@ class IntegerMap extends SimpleMap<String, Integer> {
         return Arrays.stream(entries, 0, count);
     }
 
+    public static class Entry extends SimpleMap.Entry<String, Integer> {
+        public Entry(String key, Integer value) {
+            super(key, value);
+        }
+
+        public String toString() {
+            return String.format("%s: %s", key, value);
+        }
+    }
 
 }

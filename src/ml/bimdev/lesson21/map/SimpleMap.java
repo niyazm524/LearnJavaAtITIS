@@ -62,7 +62,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
         return sb.append('}').toString();
     }
 
-    protected class Entry<A, B> {
+    public static class Entry<A, B> {
         public A key;
         public B value;
 
