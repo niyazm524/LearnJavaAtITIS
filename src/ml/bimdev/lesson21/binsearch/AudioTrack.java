@@ -30,4 +30,22 @@ public class AudioTrack implements Comparable<AudioTrack> {
     public static AudioTrack random() {
         return new AudioTrack(rnd.nextInt(99), Character.toString((char) ('a' + rnd.nextInt((int) 'z' - 'a'))));
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof AudioTrack))
+            return false;
+        if (this == obj)
+            return true;
+        AudioTrack other = (AudioTrack) obj;
+        return duration == other.duration && title.equals(other.title);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 1;
+        hash = hash * 31 + duration;
+        hash = hash * 31 * title.hashCode();
+        return hash;
+    }
 }
