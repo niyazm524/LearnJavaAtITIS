@@ -1,14 +1,14 @@
 package ml.bimdev.lesson21.binsearch;
 
 public class SortedList<T extends Comparable> {
-    private Object[] arr;
-    private int count;
+    protected Object[] arr;
+    protected int count = 0;
 
     public SortedList() {
         this.arr = new Object[10];
     }
 
-    private void grow() {
+    protected void grow() {
         int oldCapacity = arr.length;
         int newCapacity = (int) (oldCapacity * 1.5f);
         Object[] newArr = new Object[newCapacity];

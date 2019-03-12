@@ -2,8 +2,10 @@ package ml.bimdev.lesson23.homework;
 
 import java.util.Comparator;
 import java.util.Objects;
+import java.util.Random;
 
 public class Student implements Comparable<Student> {
+    private static Random rnd = new Random();
     private int course;
     private String firstName;
     private String lastName;
@@ -76,5 +78,12 @@ public class Student implements Comparable<Student> {
             } else return firstNameCmp;
         }
         return o.course - this.course;
+    }
+
+    public static Student random() {
+        Student s = new Student(rnd.nextInt(7) + 1, Character.toString((char) ('a' + rnd.nextInt((int) 'z' - 'a'))));
+        if (rnd.nextBoolean())
+            s.setLastName(Character.toString((char) ('a' + rnd.nextInt((int) 'z' - 'a'))));
+        return s;
     }
 }
