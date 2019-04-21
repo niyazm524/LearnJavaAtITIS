@@ -1,20 +1,22 @@
 package ml.bimdev.lesson31;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class BruteTask {
+class BruteTask {
     public static void main(String[] args) {
+        generateCombinationsRecursion("abc");
         //System.out.println(Arrays.toString(generateCombinationsRecursion("abc".toCharArray(), )));
     }
 
-    String[] generateCombinationsLoop(String input) {
-        char[] chars = input.toCharArray();
-        for(int i = 0; i < chars.length; i++) {
+    private static void generateCombinationsRecursion(String str) {
+        generateCombinationsRecursion("", str);
+    }
 
+    private static void generateCombinationsRecursion(String prefix, String str) {
+        int n = str.length();
+        if (n == 0) System.out.println(prefix);
+        else {
+            for (int i = 0; i < n; i++)
+                generateCombinationsRecursion(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1, n));
         }
-        return null;
     }
 
     /*
@@ -26,18 +28,5 @@ public class BruteTask {
     cba
 
      */
-
-//    private static String[] generateCombinationsRecursion(String input) {
-//        if(input.length() == 1) return new String[] {input};
-//        char first = input.charAt(0);
-//        String[] variants = new String[fact(input.length())];
-//
-//
-//    }
-
-    private static int fact(int n) {
-        return n == 1 ? 1 : n * fact(n - 1);
-    }
-
 
 }
